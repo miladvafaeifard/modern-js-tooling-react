@@ -1,0 +1,19 @@
+{
+  "name": "react-boilerplate",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miladvafaeifard/modern-js-tooling-react.git"
+  },
+  "author": "Milad Vafaeifard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miladvafaeifard/modern-js-tooling-react/issues"
+  },
+  "homepage": "https://github.com/miladvafaeifard/modern-js-tooling-react#readme"
+}
