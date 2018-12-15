@@ -9,4 +9,4 @@ const config = {
     }
 }
 
-module.exports = webpackMerge(baseConfig, config);
+module.exports = webpackMerge(baseConfig, config)

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const entry = path.resolve(__dirname, '../src/app/index.js')
 const outputPath = path.resolve(__dirname, '../dist')
 const template = path.resolve(__dirname, '../src/index.html')
-const IGNORE_NODE_MODULES = /node_modules/;
+const IGNORE_NODE_MODULES = /node_modules/
 
 module.exports = {
 	entry,
