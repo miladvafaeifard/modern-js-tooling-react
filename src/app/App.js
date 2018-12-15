@@ -4,6 +4,7 @@ import {hot} from 'react-hot-loader'
 
 import '../styles.css'
 
+const Warning = React.lazy( () => import('./Warning'))
 
 class App extends Component {
     state = {
@@ -18,6 +19,13 @@ class App extends Component {
                 <h2 className={count >= 5? 'warning' : ''} >count: {count}</h2>
                 <button onClick={() => this.setState(state => ({count: state.count + 1}))}>+</button>
                 <button onClick={() => this.setState(state => ({count: state.count - 1}))}>-</button>
+                
+                    {count > 10 ? 
+                        <React.Suspense fallback={null}>
+                            <Warning /> 
+                        </React.Suspense>
+                    : null}
+
             </div>
         );
     }
