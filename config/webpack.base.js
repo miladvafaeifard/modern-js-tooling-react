@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const entry = path.resolve(__dirname, '../src/app/index.js')
 const outputPath = path.resolve(__dirname, '../dist')
 const template = path.resolve(__dirname, '../src/index.html')
+const IGNORE_NODE_MODULES = /node_modules/;
 
 module.exports = {
     entry,
@@ -16,11 +17,22 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
+                exclude: IGNORE_NODE_MODULES,
                 options: {
-                    presets: ['@babel/preset-env', '@babel/preset-react'],
-                    plugins: ['@babel/plugin-proposal-class-properties']
+                    presets: [
+                        '@babel/preset-env', 
+                        '@babel/preset-react'
+                    ],
+                    plugins: [
+                        'react-hot-loader/babel',
+                        '@babel/plugin-proposal-class-properties'
+                    ]
                 }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+                exclude: IGNORE_NODE_MODULES,
             }
         ]
     },
