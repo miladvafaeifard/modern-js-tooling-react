@@ -17,29 +17,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: IGNORE_NODE_MODULES,
-        options: {
-          presets: [
-            [
-              '@babel/preset-env',
-              {
-                targets: [
-                  'last 2 versions',
-                  'not dead',
-                  'not < 2%',
-                  'not ie 11' // take out if we need to support IE 11
-                ],
-                useBuiltIns: 'entry'
-              }
-            ],
-            '@babel/preset-react'
-          ],
-          plugins: [
-            'react-hot-loader/babel',
-            '@babel/plugin-proposal-class-properties',
-            '@babel/plugin-syntax-dynamic-import'
-          ]
-        }
+        exclude: IGNORE_NODE_MODULES
       },
       {
         test: /\.css$/,
