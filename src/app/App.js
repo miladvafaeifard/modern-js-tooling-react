@@ -1,24 +1,22 @@
-import React, { Component } from 'react'
-import { hot } from 'react-hot-loader'
-import { NavLink } from 'react-router-dom'
+import { hot } from 'react-hot-loader/root'
+import React from 'react'
+import { Route, Switch } from 'react-router-dom'
+import { ConnectedRouter } from 'connected-react-router'
+import PropTypes from 'prop-types'
 
-export class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Hello World</h1>
-        <NavLink to="/" activeClassName="hurray">
-          Home
-        </NavLink>
-        <NavLink to="/counter" activeClassName="hurray">
-          counter
-        </NavLink>
-      </div>
-    )
-  }
+import Home from './container/home/home'
+import Counter from './container/counter/counter'
+
+const App = ({ history }) => (
+  <ConnectedRouter history={history}>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/counter" component={Counter} />
+    </Switch>
+  </ConnectedRouter>
+)
+
+App.propTypes = {
+  history: PropTypes.object.isRequired
 }
-
-App.propTypes = {}
-
-const hotFunction = hot(module)
-export default hotFunction(App)
+export default hot(App)

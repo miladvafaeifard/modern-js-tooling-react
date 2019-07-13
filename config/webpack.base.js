@@ -7,7 +7,7 @@ const IGNORE_NODE_MODULES = /node_modules/
 
 module.exports = {
   context: path.resolve(__dirname, '../src'),
-  entry: ['@babel/polyfill', './app/index.js'],
+  entry: ['@babel/polyfill', 'react-hot-loader/patch', './app/index.js'],
   output: {
     path: outputPath,
     filename: 'app.bundle.js'

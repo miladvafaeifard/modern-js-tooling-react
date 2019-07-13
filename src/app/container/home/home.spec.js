@@ -1,9 +1,9 @@
 import React from 'react'
-import { App } from './app'
+import { Home } from './home'
 import { shallow } from 'enzyme'
 
-describe('App', () => {
+describe('Home', () => {
   it('Renders without error', () => {
-    shallow(<App />)
+    shallow(<Home />)
   })
 })
