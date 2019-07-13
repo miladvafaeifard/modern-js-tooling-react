@@ -14,9 +14,9 @@
   },
   "states": [
     {
-      "name": "home",
-      "url": "/home",
-      "component": "Home"
+      "name": "counter",
+      "url": "/counter",
+      "component": "Counter"
     }
   ],
   "movies": {

@@ -1,5 +1,5 @@
 import intlReducer from './intl-reducer'
-import CounterReducer from 'container/Counter/Counter.reducer'
+import CounterReducer from 'container/counter/counter-reducer'
 
 export const rootReducer = {
   intl: intlReducer,

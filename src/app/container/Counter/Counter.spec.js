@@ -1,11 +1,11 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 
-import ConnectCounterComponent, { CounterComponent } from './Counter.component'
-import * as Actions from './Counter.actions'
-import counterReducer from './Counter.reducer'
+import ConnectCounterComponent, { Counter } from './counter'
+import * as Actions from './counter-actions'
+import counterReducer from './counter-reducer'
 
 fdescribe('Counter component', () => {
   describe('using Redux support', () => {
@@ -19,7 +19,7 @@ fdescribe('Counter component', () => {
 
     beforeEach(() => {
       store.clearActions()
-      wrapper = mount(
+      wrapper = shallow(
         <Provider store={store}>
           <ConnectCounterComponent title="Timer" />
         </Provider>
@@ -27,7 +27,7 @@ fdescribe('Counter component', () => {
     })
 
     it('should init without crashing', () => {
-      expect(wrapper.find(CounterComponent).prop('title')).toBe('Timer')
+      expect(wrapper.find(Counter).prop('title')).toBe('Timer')
     })
 
     it('dispatches action increase', () => {

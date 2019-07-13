@@ -7,7 +7,7 @@ const IGNORE_NODE_MODULES = /node_modules/
 
 module.exports = {
   context: path.resolve(__dirname, '../src'),
-  entry: ['./app/index.js'],
+  entry: ['@babel/polyfill', './app/index.js'],
   output: {
     path: outputPath,
     filename: 'app.bundle.js'
@@ -29,14 +29,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: IGNORE_NODE_MODULES
+        test: /\.(js|jsx)$/,
+        include: [path.resolve(__dirname, '../src/app')],
+        exclude: [/node_modules/, /\.spec.(js|jsx)$/],
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
         exclude: IGNORE_NODE_MODULES
+      },
+      {
+        test: /\.(spec\.(jsx|js))$/,
+        loader: 'ignore-loader'
       }
     ]
   },
@@ -50,5 +55,11 @@ module.exports = {
       chunksSortMode: 'dependency',
       template: path.resolve(__dirname, '../src/index.html')
     })
-  ]
+  ],
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty'
+  }
 }

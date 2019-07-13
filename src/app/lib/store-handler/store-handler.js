@@ -1,5 +1,5 @@
 import DevTools from 'lib/dev-tools/dev-tools'
-import { applyMiddleware, combineReducers, createStore, compose } from 'redux'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
 import axiosMiddleware from 'redux-axios-middleware'
 import thunk from 'redux-thunk'
 import { rootReducer } from 'reducer'
@@ -24,17 +24,13 @@ export default class StoreHandler {
       returnRejectedPromiseOnError: true
     }
 
-    const usedMiddleware = [
-      thunk,
-      ...middleware,
-      axiosMiddleware(client, options)
-    ]
+    const usedMiddleware = [thunk, middleware, axiosMiddleware(client, options)]
 
     return createStore(
       reducer,
-      DevTools.composeEnhancers(
-        applyMiddleware(...usedMiddleware)
-      )
+      DevTools.composeEnhancers(applyMiddleware(...usedMiddleware))
     )
   }
 }
+
+DevTools.composeEnhancers

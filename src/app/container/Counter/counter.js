@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+
 import mapStateToProps from './util/map-state'
 import mapDispatchToProps from './util/map-dispatch'
 
-export class CounterComponent extends Component {
+export class Counter extends Component {
   increaseHandle = () => {
     this.props.action.increase()
   }
@@ -30,7 +31,7 @@ export class CounterComponent extends Component {
   }
 }
 
-CounterComponent.propTypes = {
+Counter.propTypes = {
   title: PropTypes.string,
   action: PropTypes.shape({
     increase: PropTypes.func,
@@ -44,4 +45,4 @@ CounterComponent.propTypes = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CounterComponent)
+)(Counter)
