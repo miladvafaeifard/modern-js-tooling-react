@@ -3,25 +3,26 @@ const config = {
     defaultLocale: 'en',
     locales: ['en', 'de']
   },
+  title: 'Frontend Development',
   endpoints: {
+    api: 'http://localhost:8080/',
+    colleaguesList: {
+      url: '/colleagues'
+    },
     mock: '/mock',
     shared: '/shared'
   },
-  states: [
+  routes: [
     {
-      name: 'test1',
-      url: '/test1',
-      component: 'TestScreen1'
+      path: '/',
+      exact: true,
+      component: 'Home'
     },
     {
-      name: 'test2',
-      url: '/test2',
-      component: 'TestScreen2'
+      path: '/counter',
+      component: 'Counter'
     }
-  ],
-  movies: {
-    bravo: 'https://www.w3schools.com/htmL/mov_bbb.mp4'
-  }
+  ]
 }
 
 export default config

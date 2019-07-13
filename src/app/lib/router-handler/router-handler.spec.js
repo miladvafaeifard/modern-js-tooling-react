@@ -3,6 +3,8 @@ import configureStore from 'redux-mock-store'
 import RouterHandler from './router-handler'
 import { UIRouterReact } from '@uirouter/react'
 
+import '../../../util/config-mock-test-helper'
+
 describe('RouterHandler', () => {
   describe('getStates', () => {
     it('should return with state definintinos from config', () => {

@@ -70,7 +70,7 @@ fdescribe('Counter component', () => {
       expect(counterReducer({ count: 1 }, action)).toEqual(expected)
     })
 
-    fit('should fire increase action and count value to be equal 1', () => {
+    it('should fire increase action and count value to be equal 1', () => {
       wrapper.find('#increaseButton').simulate('click')
       expect(wrapper.find('p.output-count').text()).toBe('1')
     })
