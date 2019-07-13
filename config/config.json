@@ -1,0 +1,24 @@
+{
+  "intl": {
+    "defaultLocale": "en",
+    "locales": ["en", "de"]
+  },
+  "endpoints": {
+    "api": "http://localhost:8080/",
+    "colleaguesList": {
+      "url": "/colleagues"
+    },
+    "mock": "/mock",
+    "shared": "/shared"
+  },
+  "states": [
+    {
+      "name": "home",
+      "url": "/home",
+      "component": "Home"
+    }
+  ],
+  "movies": {
+    "bravo": "https://www.w3schools.com/htmL/mov_bbb.mp4"
+  }
+}

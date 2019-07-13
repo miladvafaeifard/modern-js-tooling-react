@@ -1,6 +1,6 @@
 const mapStateToProps = state => ({
   data: {
-    count: state.count
+    count: state.counter.count
   }
 })
 
