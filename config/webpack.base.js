@@ -53,7 +53,7 @@ module.exports = {
       config: JSON.stringify(config)
     }),
     new HtmlWebpackPlugin({
-      title: 'frontend dev',
+      title: config.title,
       chunksSortMode: 'dependency',
       template: path.resolve(__dirname, '../src/index.html')
     })

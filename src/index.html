@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>React Boilerplate</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-    <div id="app"></div>
+    <div role="main" id="app"></div>
     <% if(process.env.NODE_ENV === 'production') { %>
         <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>

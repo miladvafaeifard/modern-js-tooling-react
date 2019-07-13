@@ -3,6 +3,7 @@
     "defaultLocale": "en",
     "locales": ["en", "de"]
   },
+  "title": "Frontend Development",
   "endpoints": {
     "api": "http://localhost:8080/",
     "colleaguesList": {
