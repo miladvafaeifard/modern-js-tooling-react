@@ -32,9 +32,8 @@ export default class StoreHandler {
 
     return createStore(
       reducer,
-      compose(
-        applyMiddleware(...usedMiddleware),
-        DevTools.getDevTools()
+      DevTools.composeEnhancers(
+        applyMiddleware(...usedMiddleware)
       )
     )
   }
