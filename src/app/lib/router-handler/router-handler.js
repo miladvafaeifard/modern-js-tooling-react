@@ -1,12 +1,4 @@
 import _ from 'lodash'
-import { hashLocationPlugin } from '@uirouter/react'
-
-import {
-  createRouterMiddleware,
-  routerReducer,
-  createReduxPlugin
-} from '@uirouter/redux'
-import { DSRPlugin } from '@uirouter/dsr'
 import config from 'config'
 
 export default class RouterHandler {
@@ -44,14 +36,8 @@ export default class RouterHandler {
     return state
   }
 
-  static getPlugins(store) {
-    const reduxPlugin = createReduxPlugin(store)
-
-    return [DSRPlugin, hashLocationPlugin, reduxPlugin]
-  }
-
   static getRouterMiddleware(router) {
-    return createRouterMiddleware(router)
+    return null
   }
 
   static getRouterReducer() {
