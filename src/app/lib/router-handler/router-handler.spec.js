@@ -1,15 +1,15 @@
 import _ from 'lodash'
+import { createBrowserHistory } from 'history'
 import configureStore from 'redux-mock-store'
 import RouterHandler from './router-handler'
-import { UIRouterReact } from '@uirouter/react'
 
 import '../../../util/config-mock-test-helper'
 
 describe('RouterHandler', () => {
-  describe('getStates', () => {
+  describe('getRoutes', () => {
     it('should return with state definintinos from config', () => {
       //ASSIGN
-      const expectedStates = JSON.stringify([
+      const expectedRoutes = JSON.stringify([
         {
           component: jest.fn(),
           name: 'test1',
@@ -22,33 +22,33 @@ describe('RouterHandler', () => {
         }
       ])
       //ACT
-      const receivedStates = JSON.stringify(RouterHandler.getStates())
+      const receivedRoutes = JSON.stringify(RouterHandler.getRoutes())
       //ASSERT
-      expect(receivedStates).toEqual(expectedStates)
+      expect(receivedRoutes).toEqual(expectedRoutes)
     })
   })
 
   describe('requireComponentRoute', () => {
     it('should proceed with state definition from config', () => {
       //ASSIGN
-      const state = {
+      const route = {
         component: 'TestScreen1',
         name: 'test1',
         url: '/test1'
       }
-      const expectedState = {
+      const expectedRoute = {
         component: jest.fn(),
         name: 'test1',
         url: '/test1'
       }
 
       //ACT
-      const receivedState = RouterHandler.requireComponentRoute(state)
+      const receivedRoute = RouterHandler.requireComponentRoute(route)
       //ASSERT
-      expect(JSON.stringify(receivedState)).toEqual(
-        JSON.stringify(expectedState)
+      expect(JSON.stringify(receivedRoute)).toEqual(
+        JSON.stringify(expectedRoute)
       )
-      expect(typeof receivedState.component).toEqual('function')
+      expect(typeof receivedRoute.component).toEqual('function')
     })
     it('return with undefined if input is unspecified', () => {
       expect(RouterHandler.requireComponentRoute()).toEqual(undefined)
@@ -79,9 +79,9 @@ describe('RouterHandler', () => {
   describe('getRouterMiddleware', () => {
     it('should return with router middleware', () => {
       //ASSIGN
-      const router = new UIRouterReact()
+      const history = createBrowserHistory()
       //ACT
-      const receivedRouterMiddleware = RouterHandler.getRouterMiddleware(router)
+      const receivedRouterMiddleware = RouterHandler.getRouterMiddleware(history)
       //ASSERT
       expect(typeof receivedRouterMiddleware).toEqual('function')
     })
@@ -89,8 +89,9 @@ describe('RouterHandler', () => {
   describe('getRouterReducer', () => {
     it('should return with router reducer', () => {
       //ASSIGN
+      const history = createBrowserHistory()
       //ACT
-      const receivedRouterReducer = RouterHandler.getRouterReducer()
+      const receivedRouterReducer = RouterHandler.getRouterReducer(history)
       //ASSERT
       expect(typeof receivedRouterReducer).toEqual('object')
       expect(typeof _.get(receivedRouterReducer, 'router', false)).toEqual(
