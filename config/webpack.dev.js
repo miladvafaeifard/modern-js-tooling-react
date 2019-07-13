@@ -5,7 +5,8 @@ const config = {
   mode: 'development',
   devtool: 'source-map',
   devServer: {
-    port: 9085
+    port: 9085,
+    historyApiFallback: true
   }
 }
 
