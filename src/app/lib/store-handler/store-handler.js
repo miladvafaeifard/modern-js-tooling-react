@@ -24,11 +24,7 @@ export default class StoreHandler {
       returnRejectedPromiseOnError: true
     }
 
-    const usedMiddleware = [
-      thunk,
-      ...middleware,
-      axiosMiddleware(client, options)
-    ]
+    const usedMiddleware = [thunk, middleware, axiosMiddleware(client, options)]
 
     return createStore(
       reducer,
@@ -36,5 +32,3 @@ export default class StoreHandler {
     )
   }
 }
-
-DevTools.composeEnhancers

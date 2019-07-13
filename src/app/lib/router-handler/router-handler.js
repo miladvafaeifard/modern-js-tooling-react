@@ -1,4 +1,6 @@
 import _ from 'lodash'
+import { connectRouter } from 'connected-react-router'
+import { routerMiddleware } from 'connected-react-router'
 import config from 'config'
 
 export default class RouterHandler {
@@ -37,12 +39,12 @@ export default class RouterHandler {
   }
 
   static getRouterMiddleware(router) {
-    return null
+    return routerMiddleware(router)
   }
 
-  static getRouterReducer() {
+  static getRouterReducer(history) {
     return {
-      router: routerReducer
+      router: connectRouter(history)
     }
   }
 }
