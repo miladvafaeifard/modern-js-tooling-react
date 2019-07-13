@@ -12,14 +12,15 @@
     "mock": "/mock",
     "shared": "/shared"
   },
-  "states": [
+  "routes": [
     {
-      "name": "counter",
-      "url": "/counter",
+      "path": "/",
+      "exact": true,
+      "component": "Home"
+    },
+    {
+      "path": "/counter",
       "component": "Counter"
     }
-  ],
-  "movies": {
-    "bravo": "https://www.w3schools.com/htmL/mov_bbb.mp4"
-  }
+  ]
 }

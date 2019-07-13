@@ -1,19 +1,14 @@
 import { hot } from 'react-hot-loader/root'
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { renderRoutes } from 'react-router-config'
 import { ConnectedRouter } from 'connected-react-router'
+import RouterHandler from 'lib/router-handler/router-handler'
 import PropTypes from 'prop-types'
 
-import Home from './container/home/home'
-import Counter from './container/counter/counter'
+const routes = RouterHandler.getRoutes()
 
 const App = ({ history }) => (
-  <ConnectedRouter history={history}>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/counter" component={Counter} />
-    </Switch>
-  </ConnectedRouter>
+  <ConnectedRouter history={history}>{renderRoutes(routes)}</ConnectedRouter>
 )
 
 App.propTypes = {

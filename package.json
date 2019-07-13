@@ -72,6 +72,7 @@
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.6.0",
     "react-redux": "^6.0.1",
+    "react-router-config": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.1",
     "redux-axios-middleware": "^4.0.1",

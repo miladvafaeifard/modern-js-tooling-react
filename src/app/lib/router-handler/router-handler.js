@@ -4,38 +4,29 @@ import { routerMiddleware } from 'connected-react-router'
 import config from 'config'
 
 export default class RouterHandler {
-  static getStates() {
-    const states = []
-    config.states.forEach(state => {
-      states.push(this.getComponentState(state))
+  static getRoutes() {
+    const routes = []
+    config.routes.forEach(route => {
+      routes.push(this.requireComponentRoute(route))
     })
 
-    return states
+    return routes
   }
 
-  static getComponentState(state) {
-    const componentFile = _.kebabCase(_.get(state, 'component', ''))
+  static requireComponentRoute(route) {
+    const componentFile = _.kebabCase(_.get(route, 'component', ''))
 
-    if (!componentFile && !!state) {
-      return state
+    if (!componentFile && !!route) {
+      return route
     }
 
-    if (!state) {
+    if (!route) {
       return undefined
     }
 
-    if (state.deepStateRedirect) {
-      state.deepStateRedirect = {
-        fn: function(transition, target) {
-          return target
-        },
-        default: state.deepStateRedirect.default
-      }
-    }
+    route.component = require(`container/${componentFile}/${componentFile}`).default
 
-    state.component = require(`container/${componentFile}/${componentFile}`).default
-
-    return state
+    return route
   }
 
   static getRouterMiddleware(router) {

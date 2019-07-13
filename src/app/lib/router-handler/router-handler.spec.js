@@ -26,7 +26,7 @@ describe('RouterHandler', () => {
     })
   })
 
-  describe('getComponentState', () => {
+  describe('requireComponentRoute', () => {
     it('should proceed with state definition from config', () => {
       //ASSIGN
       const state = {
@@ -41,7 +41,7 @@ describe('RouterHandler', () => {
       }
 
       //ACT
-      const receivedState = RouterHandler.getComponentState(state)
+      const receivedState = RouterHandler.requireComponentRoute(state)
       //ASSERT
       expect(JSON.stringify(receivedState)).toEqual(
         JSON.stringify(expectedState)
@@ -49,9 +49,9 @@ describe('RouterHandler', () => {
       expect(typeof receivedState.component).toEqual('function')
     })
     it('return with undefined if input is unspecified', () => {
-      expect(RouterHandler.getComponentState()).toEqual(undefined)
-      expect(RouterHandler.getComponentState(null)).toEqual(undefined)
-      expect(RouterHandler.getComponentState(NaN)).toEqual(undefined)
+      expect(RouterHandler.requireComponentRoute()).toEqual(undefined)
+      expect(RouterHandler.requireComponentRoute(null)).toEqual(undefined)
+      expect(RouterHandler.requireComponentRoute(NaN)).toEqual(undefined)
     })
   })
 
